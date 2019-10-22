@@ -122,7 +122,7 @@ class DefaultServer {
         });
 
         /* Deleta um projeto*/
-        this.server.delete('/projects/:id', (req, res) => {
+        this.server.delete('/projects/:id', this.isValidProject, (req, res) => {
             const { id } = req.params;
             DefaultServer.projects.forEach(project => {
                 if (project.id === id) {
